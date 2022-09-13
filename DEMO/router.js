@@ -16,7 +16,7 @@ function match(req, res) {
   if (typeof handler == "function") {
     handler(req, res);
   } else {
-    routes.default(req, res);
+    routes.default['GET'](req, res);
   }
 }
 
