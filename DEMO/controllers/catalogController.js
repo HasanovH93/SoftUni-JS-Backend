@@ -23,8 +23,12 @@ function createPage(req,res) {
     </select>
     </label>
     <input type='submit' value="Create">
-    </form>`));
+    </form>`, "Create New Item"));
     res.end()
+}
+
+function createItem(req,res){
+    //handle POST request
 }
 
 module.exports = {

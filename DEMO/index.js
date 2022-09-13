@@ -7,11 +7,12 @@ const {
   defaultPage,
 } = require("./controllers/homeController");
 
-router.register("/", homePage);
-router.register("/about", aboutPage);
-router.register("/catalog", catalogPage);
-router.register("default", defaultPage);
-router.register('/create',createPage)
+router.get("/", homePage);
+router.get("/about", aboutPage);
+router.get("/catalog", catalogPage);
+router.get("default", defaultPage);
+router.post("default", defaultPage);
+router.get('/create',createPage)
 
 const server = http.createServer(router.match);
 
