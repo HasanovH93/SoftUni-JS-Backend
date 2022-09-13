@@ -9,6 +9,7 @@ function html(body, title = "Demo Page") {
     <li><a href="/">Home<a></li>
     <li><a href="/about">About<a></li>
     <li><a href="/catalog">Catalog<a></li>
+    <li><a href="/create">Create<a></li>
     
     </ul>
     
@@ -18,6 +19,20 @@ function html(body, title = "Demo Page") {
     </html>`;
 }
 
+const data = [
+    {
+        id: 'asdf001',
+        name: 'Product 1',
+        color: 'red'
+    },
+    {
+        id: 'asdf002',
+        name: 'Product 2',
+        color: 'orange'
+    },
+]
+
 module.exports = {
     html,
+    data,
 }
