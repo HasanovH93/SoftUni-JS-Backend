@@ -41,7 +41,14 @@ function createItem(req, res) {
   console.log(`create request`);
   const form = new IncomingForm();
 
-  form.parse(req);
+  form.parse(req, (err, fields) => {
+    const item = {
+      id: ("asdf0000" + (Math.random() * 9999 | 0)).slice(0,8),
+      name: fields.name,
+      color: fields.color
+    };
+    data.push(item)
+  });
   res.end();
 }
 
