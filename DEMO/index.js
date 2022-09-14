@@ -13,10 +13,10 @@ const {
 
 router.get("/", homePage);
 router.get("/about", aboutPage);
+router.get("/create", createPage);
 router.get("/catalog", catalogPage);
 router.get("default", defaultPage);
-router.get("/create", createPage);
-router.get("/create", createItem);
+router.post("/create", createItem);
 
 const server = http.createServer(router.match);
 

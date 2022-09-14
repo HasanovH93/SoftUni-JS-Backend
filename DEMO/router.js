@@ -6,9 +6,12 @@ function register(method, path, handler) {
   }
   routes[path][method] = handler;
 }
-let handler;
+
 function match(req, res) {
+    console.log(routes)
+    console.log('>>>>',req.method,req.url)
   const url = new URL(req.url, `http://${req.headers.host}`);
+  let handler;
   const actions = routes[url.pathname];
   if (actions != undefined) {
     handler = actions[req.method];
