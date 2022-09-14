@@ -7,7 +7,9 @@ function catalogPage(req, res) {
       `<h1>Catalog<h2>
      <p>List of Items<p>
      <ul>
-     ${data.map((i) => `<li>${i.name} - ${i.color}</li>`).join(" ")} 
+     ${data
+       .map((i) => `<li data-id=${i.id}>${i.name} - ${i.color}</li>`)
+       .join(" ")} 
      </ul>`,
       "Catalog"
     )
@@ -43,11 +45,16 @@ function createItem(req, res) {
 
   form.parse(req, (err, fields) => {
     const item = {
-      id: ("asdf0000" + (Math.random() * 9999 | 0)).slice(0,8),
+      id: "asdf" + ("0000" + ((Math.random() * 9999) | 0)).slice(-4),
       name: fields.name,
-      color: fields.color
+      color: fields.color,
     };
-    data.push(item)
+    data.push(item);
+
+    res.writeHead(301, [
+    'Location', 
+    '/catalog'
+]);
   });
   res.end();
 }
