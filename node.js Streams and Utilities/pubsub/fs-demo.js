@@ -1,14 +1,12 @@
-const { promises: fs } = require('fs')
-start()
-show()
-async function start(){
+const   fs  = require("fs");
 
-   const data = await fs.readFile('./node.js Streams and Utilities/pubsub/demo.txt')
-   console.log(data.toString())
+const result = fs.readdirSync(".");
+for (let item of result) {
+  if (fs.statSync(`./${item}`).isDirectory()) {
+    console.log(item, "is a Directory");
+  } else {
+    console.log(item, "Is  a File");
+  }
 }
 
-async function show(){
-    const result = await fs.readdir('./')
-    console.log(result)
-}
 
