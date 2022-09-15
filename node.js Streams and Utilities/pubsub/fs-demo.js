@@ -1,12 +1,15 @@
 const   fs  = require("fs");
-
+ 
 const result = fs.readdirSync(".");
+const output = []
 for (let item of result) {
   if (fs.statSync(`./${item}`).isDirectory()) {
-    console.log(item, "is a Directory");
+   output.push(item, "is a Directory");
   } else {
-    console.log(item, "Is  a File");
+    output.push(item, "Is  a File");
   }
 }
+
+fs.writeFileSync('./summary.txt',output.join('\n'), "utf-8")
 
 
