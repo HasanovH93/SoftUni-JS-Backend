@@ -1,3 +1,8 @@
-require('./m1')
-require('./m2')
-require('./m3')
+const http = require('http')
+
+const server = http.createServer((req,res) => {
+        res.write('OK')
+        res.end()
+})
+
+server.listen(3000)
