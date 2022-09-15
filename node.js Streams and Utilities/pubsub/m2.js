@@ -1,8 +1,8 @@
-const { publush } = require('./observer')
+const emitter = require('./observer')
 
 let counter = 0;
 
 setInterval(() => {
-    publush('message',counter)
+   emitter.emit('message',counter)
     counter++
 }, 2000)

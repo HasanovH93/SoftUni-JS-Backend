@@ -1,9 +1,9 @@
-const { subscribe }  = require('./observer')
+const emitter  = require('./observer')
 
 let runningTotal = 0
 
 
-subscribe('message', (data) => {
+emitter.on('message', (data) => {
     runningTotal += data
     console.log('Current running total is', runningTotal)
 })
