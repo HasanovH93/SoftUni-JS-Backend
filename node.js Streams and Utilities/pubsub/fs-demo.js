@@ -1,8 +1,8 @@
-const fs = require('fs')
+const { promises: fs } = require('fs')
+start()
+async function start(){
 
-const text = fs.readFile('./node.js Streams and Utilities/pubsub/demo.txt', (err,data) => {
-    if (err != null){
-      return  console.error(err.message)
-    }
-    console.log(data.toString())
-})
+   const data = await fs.readFile('./node.js Streams and Utilities/pubsub/demo.txt')
+   console.log(data.toString())
+}
+
