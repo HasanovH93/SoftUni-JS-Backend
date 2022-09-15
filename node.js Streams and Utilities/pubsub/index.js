@@ -3,30 +3,27 @@ const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   if (req.method == "GET") {
-    if (req.url == "/index.html") {
-      res.writeHead(200, {
-        "Content-Type": "text/html",
-      });
-      fs.createReadStream("./node.js Streams and Utilities/pubsub/static/index.html").pipe(res);
-
-     
-     
-      // fs.readFile(
-      //   "./node.js Streams and Utilities/pubsub/static/index.html",
-      //   (err,file) => {
-      //     res.writeHead(200, {
-      //       "Content-Type": "text/html",
-      //     });
-      //     res.write(file);
-      //     res.end();
-      //   }
-      // );
-    } else {
-      res.writeHead("404");
-      res.write("404 Not found");
-      res.end();
+    let path = req.url;
+    if(path == '/'){
+      path = '/index.html'
     }
-  } else if (req.method == "POST") {
+    fs.stat(`./node.js Streams and Utilities/pubsub/static/${path}`, (err,stat) => {
+        if(err != null || stat.isFile() != true){
+          res.writeHead("404");
+          res.write("404 Not found");
+          res.end();
+        }else {
+          // res.writeHead(200, {
+          //   "Content-Type": "text/html",
+          // });
+          fs.createReadStream(
+            `./node.js Streams and Utilities/pubsub/static/${path}`
+          ).pipe(res);
+    
+        }
+    });
+  
+  }else if(req.method == "POST") {
     const body = [];
     req.on("data", (chunk) => {
       body.push(chunk);
