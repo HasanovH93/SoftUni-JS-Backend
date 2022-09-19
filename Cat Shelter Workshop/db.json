@@ -1,22 +1,33 @@
 {
   "cats": [
     {
-      "name": "gdfg",
-      "description": "dfgdfg",
-      "breed": "Fluffy Cat"
+      "name": "dasda",
+      "description": "dasdas",
+      "breed": "brbrbr",
+      "upload": "C:\\Users\\hasan\\AppData\\Local\\Temp\\31f47afb81a55b16c8af5de00"
     },
     {
-      "name": "hashas",
-      "description": "hashas",
-      "breed": "Fluffy Cat"
+      "name": "asdasd",
+      "description": "dasdasd",
+      "breed": "brbrbr",
+      "upload": "C:\\Users\\hasan\\AppData\\Local\\Temp\\c1c05c178cffd0b8fb195b800"
     },
     {
-      "name": "hasghaha",
-      "description": "adasdasda",
-      "breed": "Fluffy Cat"
+      "name": "asdasd",
+      "description": "dasdas",
+      "breed": "brbrbr",
+      "upload": "C:\\Users\\hasan\\AppData\\Local\\Temp\\93b2a54060fd434d36b6d6700"
     }
   ],
-"breeds": [
-    
-]
+  "breeds": [
+    {
+      "breed": "brbrbr"
+    },
+    {
+      "breed": "brbrbr1"
+    },
+    {
+      "breed": "fsdfsd"
+    }
+  ]
 }
