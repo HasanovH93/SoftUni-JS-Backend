@@ -1,0 +1,12 @@
+[
+    {
+        "id": "asdf1234",
+        "name": "windshield Wiper",
+        "price": 49.5
+    },
+    {
+        "id": "asdf1235",
+        "name": "Headlight Bulb",
+        "price": 12.90
+    }
+]

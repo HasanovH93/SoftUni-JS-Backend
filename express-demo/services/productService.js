@@ -1,25 +1,26 @@
-const data = [
-    {
-        id: "asdf1234",
-        name: "windshield Wiper",
-        price: 49.5
-    },
-    {
-        id: "asdf1235",
-        name: 'Headlight Bulb',
-        price: 12.90
-    }
-]
+const fs = require("fs");
 
-function getList(){
-    return data;
+const data = JSON.parse(fs.readFileSync("./services/data.json"));
+
+function getList() {
+  return data;
 }
 
-function getById(id){
-    return data.filter(p => p.id == id)
+function getById(id) {
+  return data.filter((p) => p.id == id);
+}
+
+function create(name, price) {
+  const id = "asdf" + ("0000" + ((Math.random() * 99999) | 0)).slice(-4);
+  data.push({
+    id,
+    name,
+    price,
+  });
 }
 
 module.exports = {
-    getList,
-    getById,
-}
+  getList,
+  getById,
+  create,
+};
