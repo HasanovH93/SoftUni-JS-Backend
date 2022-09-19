@@ -1,9 +1,29 @@
 body {
-    width: 980px;
     background-color: #ddd;
 }
 #content {
     background-color: white;
     width: 980px;
     margin:auto;
+}
+nav {
+    background-color: #ccc;
+}
+nav ul {
+   list-style: none;
+}
+nav ul li {
+   display:inline-block ;
+}
+nav a {
+    text-decoration: none;
+    background-color: cadetblue;
+    padding: 4px 8px;
+    color:white;
+}
+nav a:hover {
+    background-color: black;
+}
+#main {
+    padding: 32px;
 }
