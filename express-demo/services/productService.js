@@ -17,6 +17,8 @@ function create(name, price) {
     name,
     price,
   });
+
+  fs.writeFile('./services/data.json',JSON.stringify(data, "", 2), () => {})
 }
 
 module.exports = {
