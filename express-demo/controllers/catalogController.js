@@ -1,11 +1,15 @@
-const router = require('express').Router()
+const router = require("express").Router();
+const { getList } = require("../services/productService");
 
-router.get('/', (req,res) => {
-    res.render('catalog')
+router.get("/", (req, res) => {
+  const products = getList();
+  res.render("catalog", {
+    products,
+  });
 });
 
-router.get('/:productId',(req,res) => {
-    res.render('details')
-})
+router.get("/:productId", (req, res) => {
+  res.render("details");
+});
 
-module.exports = router
+module.exports = router;
