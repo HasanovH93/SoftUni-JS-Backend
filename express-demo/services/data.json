@@ -1,10 +1,5 @@
 [
   {
-    "id": "asdf1234",
-    "name": "windshield Wiper",
-    "price": 49.5
-  },
-  {
     "id": "asdf1235",
     "name": "Headlight Bulb",
     "price": 12.9
@@ -13,15 +8,5 @@
     "id": "asdf7262",
     "name": "Side Mirror Left",
     "price": 80
-  },
-  {
-    "id": "asdf5534",
-    "name": "Passenger Seat",
-    "price": 500
-  },
-  {
-    "id": "asdf7253",
-    "name": "Exhaust Pipe",
-    "price": 145
   }
 ]

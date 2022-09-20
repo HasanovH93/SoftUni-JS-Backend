@@ -1,6 +1,5 @@
-const { create } = require("../services/productService");
-
 const router = require("express").Router();
+const { create } = require("../services/productService");
 
 router.get("/", (req, res) => {
   res.render("create");
