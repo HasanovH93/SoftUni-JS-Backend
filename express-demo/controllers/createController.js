@@ -1,17 +1,22 @@
-const { create } = require('../services/productService')
+const { create } = require("../services/productService");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.get('/', (req,res) => {
-    res.render('create')
-})
-
-router.post('/', (req,res) => {
-    console.log('Handling Post')
-    console.log(req.body)
-
-    create(req.body.name, Number(req.body.price))
-    res.redirect('/catalog')
+router.get("/", (req, res) => {
+  res.render("create");
 });
 
-module.exports = router
+router.post("/", async (req, res, next) => {
+  console.log("Handling Post");
+  console.log(req.body);
+
+  try {
+    await create(req.body.name, Number(req.body.price));
+  } catch (err) {
+    next(err);
+  }
+
+  res.redirect("/catalog");
+});
+
+module.exports = router;

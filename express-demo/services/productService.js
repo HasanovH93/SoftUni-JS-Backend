@@ -10,7 +10,7 @@ function getById(id) {
   return data.find((p) => p.id == id);
 }
 
-function create(name, price) {
+async function create(name, price) {
   const id = "asdf" + ("0000" + ((Math.random() * 99999) | 0)).slice(-4);
   data.push({
     id,
@@ -18,7 +18,15 @@ function create(name, price) {
     price,
   });
 
-  fs.writeFile('./services/data.json',JSON.stringify(data, "", 2), () => {})
+  return new Promise((resolve, reject) => {
+    fs.writeFile("./services/data.json", JSON.stringify(data, "", 2), (err) => {
+      if (err == null) {
+        resolve();
+      } else {
+        reject(err);
+      }
+    });
+  });
 }
 
 module.exports = {
