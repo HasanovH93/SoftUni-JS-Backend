@@ -7,7 +7,7 @@ function getList() {
 }
 
 function getById(id) {
-  return data.filter((p) => p.id == id);
+  return data.find((p) => p.id == id);
 }
 
 function create(name, price) {

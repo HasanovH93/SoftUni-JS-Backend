@@ -1,15 +1,24 @@
 const router = require("express").Router();
-const { getList } = require("../services/productService");
+const { getList, getById } = require("../services/productService");
 
 router.get("/", (req, res) => {
   const products = getList();
   res.render("catalog", {
     products,
   });
-});
+}); 
 
 router.get("/:productId", (req, res) => {
-  res.render("details");
+  const id = req.params.productId
+  const product = getById(id)
+  if(product){
+    res.render("details",product);
+  }else {
+    res.render('missingProduct', {
+      id
+    })
+  }
+
 });
 
 module.exports = router;
