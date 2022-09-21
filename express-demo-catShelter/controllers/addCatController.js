@@ -10,9 +10,9 @@ router.get('/cats/add-cat', (req, res) => {
   });
 })
 
-router.post('/cats/add-cat',  (req,res) => {
-    console.log(req.body)
-     res.redirect('/')
+router.post('/cats/add-cat', async (req,res) => {
+   await createCat(req.body);
+   res.redirect('/')
    
 });
 

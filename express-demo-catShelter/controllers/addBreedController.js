@@ -8,7 +8,7 @@ router.get("/cats/add-breed", (req, res) => {
 });
 
 router.post('/cats/add-breed', async (req,res) => {
-  console.log(req.body)
+ 
  await createBreed(req.body)
   res.redirect('/')
 
