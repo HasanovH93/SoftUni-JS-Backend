@@ -1,4 +1,4 @@
-const { create, getList } = require("../services/addBreedService");
+const { createBreed } = require("../services/addBreedService");
 
 const router = require("express").Router();
 
@@ -8,7 +8,8 @@ router.get("/cats/add-breed", (req, res) => {
 });
 
 router.post('/cats/add-breed', async (req,res) => {
- await create(req.body)
+  console.log(req.body)
+ await createBreed(req.body)
   res.redirect('/')
 
 });

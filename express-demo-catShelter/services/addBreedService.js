@@ -7,7 +7,7 @@ function getList() {
   return db.breeds;
 }
 
-async function create(breed) {
+async function createBreed(breed) {
   db.breeds.push(breed);
   await persist();
 }
@@ -25,6 +25,6 @@ async function persist() {
 }
 
 module.exports = {
-  create,
+  createBreed,
   getList,
 };
