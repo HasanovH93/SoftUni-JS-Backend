@@ -13,11 +13,12 @@ const app = express();
 app.engine(".hbs", handlebars.engine);
 app.set("view engine", ".hbs");
 
+app.use(express.urlencoded({ extended:true }));
 app.use("/static", express.static("static"));
 
 app.use(homeController);
-app.use( addBreedsController)
-app.use( addCatController)
+app.use(addBreedsController)
+app.use(addCatController)
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000...");

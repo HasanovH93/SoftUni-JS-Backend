@@ -1,8 +1,12 @@
 const router = require('express').Router()
+const { getList } = require('../services/addBreedService')
 
 router.get('/cats/add-cat', (req, res) => {
-    console.log("GET")
-    res.render('addCat')
+    const breeds = getList()
+    console.log(breeds)
+    res.render("addCat" , {
+    breeds,
+  });
 })
 
 

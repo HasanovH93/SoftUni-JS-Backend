@@ -1,0 +1,30 @@
+const fs = require("fs");
+const db = require("../services/db.json");
+
+
+
+function getList() {
+  return db.breeds;
+}
+
+async function create(breed) {
+  db.breeds.push(breed);
+  await persist();
+}
+
+async function persist() {
+  return new Promise((resolve, reject) => {
+    fs.writeFile("./services/db.json", JSON.stringify(db, "", 2), (err) => {
+      if (err == null) {
+        resolve();
+      } else {
+        reject(err);
+      }
+    });
+  });
+}
+
+module.exports = {
+  create,
+  getList,
+};
