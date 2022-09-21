@@ -1,36 +1,23 @@
 const express = require("express");
+const hbr = require("express-handlebars");
+const homeController = require("./controllers/homeController");
+const addBreedsController = require('./controllers/addBreedController')
+const addCatController = require('./controllers/addCatController')
+
+const handlebars = hbr.create({
+  extname: ".hbs",
+});
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.header({
-        'Content-Type': 'text/html'
-    })
-  res.write(`
-  <h1>Home</h1>
-  <ul>
-  <li><a href="/addBreed">Add Breed</li>
-  <li><a href="/addCat">Add Cat</li>
-  </ul>
-  `);
-  res.end();
-});
+app.engine(".hbs", handlebars.engine);
+app.set("view engine", ".hbs");
 
-app.get("/addBreed", (req, res) => {
-  res.header({
-    "Content-Type": "text/html",
-  });
-  res.write("<h1>Add Breed</h1>");
-  res.end();
-});
+app.use("/static", express.static("static"));
 
-app.get("/addCat", (req, res) => {
-  res.header({
-    "Content-Type": "text/html",
-  });
-  res.write("<h1>Add Cat</h1>");
-  res.end();
-});
+app.use(homeController);
+app.use( addBreedsController)
+app.use( addCatController)
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000...");
