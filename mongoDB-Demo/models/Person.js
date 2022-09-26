@@ -4,7 +4,9 @@ const personSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   age: { type: Number, required: true, min: [0, "Age cannot be negative"] },
+  nationality: {type: String, enum:['Bulgarian','Serbian','German']}
 });
+
 
 personSchema.path('age').validate(function() {
     return this.age >= 0

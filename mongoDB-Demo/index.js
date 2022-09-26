@@ -13,7 +13,8 @@ async function start() {
    const person = new Person({
       firstName: "John",
       lastName: "Smith",
-      age:-3,
+      age:30,
+      nationality:'German'
    });
 
    await person.save()
