@@ -1,30 +1,29 @@
 const mongoose = require("mongoose");
+const Person = require("./models/Person");
+const Cat = require("./models/Cat");
+const Article = require("./models/Article");
+const Comment = require('./models/Comment')
+
 
 const connectionString = "mongodb://localhost:27017/testdb";
-const Person = require("./models/Person");
-const Cat = require('./models/Cat')
-
 start();
+
 async function start() {
   await mongoose.connect(connectionString, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });
 
-  //  const cat = new Cat({
-  //     name:"Gary",
-  //     color:"Turquise",
-  //     age: 9
-  //  });
+  console.log('Database connected');
 
-  //  await cat.save()
+ 
+
+  const article = await Article.findOne({});
+  const comment = await Comment.findOne({});
+
+  article.comments.push(comment);
   
-  const data = await Cat
-  .find({})
-  .where('age').gte(5).lte(6)
-  .select()
-  console.log(data)
-
+  await article.save()
 
   await mongoose.disconnect();
 }
