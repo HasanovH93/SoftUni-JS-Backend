@@ -13,14 +13,17 @@ async function start() {
    const person = new Person({
       firstName: "John",
       lastName: "Smith",
-      age:30,
+      age:-3,
    });
 
    await person.save()
   
   const data = await Person.find({});
   console.log(data[0].sayHi());
-  console.log(data[0].name)
+  console.log(data[0].name);
+
+  data[0].name = 'John Peterson';
+  await data[0].save()
 
   await mongoose.disconnect();
 }
