@@ -18,12 +18,9 @@ async function start() {
 
  
 
-  const article = await Article.findOne({});
-  const comment = await Comment.findOne({});
+  const article = await Article.findOne({}).populate('comments');
+  console.log(article)
 
-  article.comments.push(comment);
-  
-  await article.save()
 
   await mongoose.disconnect();
 }
