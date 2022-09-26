@@ -4,80 +4,57 @@
       "breed": "Persian"
     },
     {
-      "breed": "asdasd"
-    },
-    {
-      "breed": "adsda"
-    },
-    {
-      "breed": "qweqwe"
-    },
-    {
-      "breed": "adas"
-    },
-    {
-      "breed": "sss"
-    },
-    {
-      "breed": "Angorska"
-    },
-    {
-      "breed": "ssss"
-    },
-    {
-      "breed": "sss"
-    },
-    {
-      "breed": "bababa"
-    },
-    {
       "breed": "asdas"
     }
   ],
   "cats": [
     {
-      "name": {
-        "name": "dasdasd",
-        "description": "asdasda",
-        "upload": "",
-        "breed": "Persian"
-      }
+      "name": "has",
+      "description": "has",
+      "upload": "",
+      "breed": "Persian"
     },
     {
-      "name": {
-        "name": "hasan",
-        "description": "nasan",
-        "upload": "",
-        "breed": "Persian"
-      }
+      "name": "dadada",
+      "description": "dadada",
+      "upload": "",
+      "breed": "Persian"
     },
     {
-      "name": {
-        "name": "turgay",
-        "description": "turgay",
-        "upload": "",
-        "breed": "Persian"
-      }
+      "name": "gdfgdf",
+      "description": "gdfgd",
+      "upload": "filler5.jpeg",
+      "breed": "Persian"
     },
     {
-      "name": {
-        "name": "hasa",
-        "description": "asasasa",
-        "upload": "",
-        "breed": "Persian"
-      }
+      "name": "dasdasd",
+      "description": "dasdasda",
+      "upload": "asddasda.jpg",
+      "breed": "Persian"
     },
     {
-      "id": "idf19858da0968d"
+      "name": "asdasd",
+      "description": "asdasdasda",
+      "upload": "fadenlifting1.jpeg",
+      "breed": "Persian"
     },
     {
-      "id": "idb724d1b31c141",
-      "cat": {
-        "name": "dadasdasd",
-        "description": "asdsadasdas",
-        "upload": "",
-        "breed": "Persian"
-      }
+      "name": "asdas",
+      "description": "asdasd",
+      "upload": "bbbfadenlifting1.jpeg",
+      "breed": "Persian"
+    },
+    {
+      "name": "asdas",
+      "description": "asdasd",
+      "upload": "bbbfadenlifting1.jpeg",
+      "breed": "Persian"
+    },
+    {
+      "name": "dasd",
+      "description": "asdasda",
+      "upload": "asddasda.jpg",
+      "breed": "Persian"
     }
   ]
 }

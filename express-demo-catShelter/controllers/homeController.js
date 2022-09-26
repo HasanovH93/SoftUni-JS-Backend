@@ -1,8 +1,16 @@
+const {  getCatsList } = require('../services/addBreedService')
+
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-    res.render('home')
+    const cats = getCatsList()
+    res.render('home', {
+        cats,
+    })
 })
+
+
+
 
 
 module.exports = router

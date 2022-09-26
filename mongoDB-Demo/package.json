@@ -1,21 +1,16 @@
 {
-  "name": "express-demo-catshelter",
+  "name": "mongodb-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "express-fileupload": "^1.4.0",
-    "express-handlebars": "^6.0.6"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.2"
   }
 }

@@ -2,14 +2,8 @@ const fs = require("fs");
 const db = require("../services/db.json");
 
 
-async function createCat(cat,id) {
-  id = "id" + Math.random().toString(16).slice(2)
-    db.cats.push({
-      
-       id,
-       cat
-       
-    });
+async function createCat(cat) {
+    db.cats.push(cat);
     await persist();
   }
   
