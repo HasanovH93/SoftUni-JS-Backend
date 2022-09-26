@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const connectionString = "mongodb://localhost:27017/testdb";
 const Person = require("./models/Person");
+const Cat = require('./models/Cat')
 
 start();
 async function start() {
@@ -10,21 +11,17 @@ async function start() {
     useNewUrlParser: true,
   });
 
-   const person = new Person({
-      firstName: "John",
-      lastName: "Smith",
-      age:30,
-      nationality:'German'
-   });
+  //  const cat = new Cat({
+  //     name:"Gary",
+  //     color:"Turquise",
+  //     age: 9
+  //  });
 
-   await person.save()
+  //  await cat.save()
   
-  const data = await Person.find({});
-  console.log(data[0].sayHi());
-  console.log(data[0].name);
+  const data = await Cat.find({ age: {$gte: 5} });
+  console.log(data)
 
-  data[0].name = 'John Peterson';
-  await data[0].save()
 
   await mongoose.disconnect();
 }
