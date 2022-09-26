@@ -19,7 +19,9 @@ async function start() {
 
   //  await cat.save()
   
-  const data = await Cat.find({ age: {$gte: 5} });
+  const data = await Cat
+  .find({})
+  .where('age').gte(5).lte(6)
   console.log(data)
 
 
