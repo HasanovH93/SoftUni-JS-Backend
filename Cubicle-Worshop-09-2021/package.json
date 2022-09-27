@@ -1,0 +1,11 @@
+{
+  "name": "cubicle-workshop",
+  "version": "1.0.0",
+  "description": "Express js educationial Workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HasanovHasan",
+  "license": "MIT"
+}
