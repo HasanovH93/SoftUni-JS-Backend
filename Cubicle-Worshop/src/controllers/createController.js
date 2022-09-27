@@ -10,7 +10,7 @@ const renderCreateCubePage = (req, res) => {
 const createCube = (req, res) => {
   const { name, desctiption, imageUrl, difficulty } = req.body;
   cubeService.create(name, desctiption, imageUrl, difficulty);
-  res.redirect("/create");
+  res.redirect("/");
 };
 
 const getCubeDetails = (req, res) => {
