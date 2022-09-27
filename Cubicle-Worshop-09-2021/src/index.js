@@ -1,10 +1,14 @@
 const express = require('express');
+const initHbs = require('../config/handlebars');
+
 
 const app = express();
 
-app.all('/', (req, res) => {
-    res.write('It\'s working');
-    res.end()
+initHbs(app)
+
+
+app.get('/', (req, res) => {
+    res.render('index')
 });
 
 app.listen(3000, () => {
