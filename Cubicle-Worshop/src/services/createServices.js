@@ -1,7 +1,9 @@
 const Cube = require("../models/Cube");
 
 
-const getall = () => Cube.cubes
+const getall = () => Cube.cubes;
+
+const getOne = (id) => Cube.cubes.find(x => x.id == id)
 
 
 const create = (name,description,imgUrl,difficulty) => {
@@ -13,6 +15,7 @@ const create = (name,description,imgUrl,difficulty) => {
 const cubeService = {
     getall,
     create,
+    getOne,
    
 };
 
