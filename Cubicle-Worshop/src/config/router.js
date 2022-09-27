@@ -5,6 +5,6 @@ const homeController = require('../controllers/homeController');
 
 
 router.use(homeController);
-router.use('/cube',  createController);
+router.use(createController);
 
 module.exports = router;

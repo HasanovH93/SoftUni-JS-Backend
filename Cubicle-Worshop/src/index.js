@@ -2,10 +2,12 @@ const express = require("express");
 const path = require("path");
 const initHbs = require("./config/handlebars");
 const routes = require("./config/router");
+const handlebars = require("express-handlebars");
 
 const app = express();
 
-initHbs(app);
+initHbs(app, handlebars);
+app.use(express.urlencoded({ extended: true}))
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(routes);
 
