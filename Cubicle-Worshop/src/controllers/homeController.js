@@ -17,9 +17,15 @@ const about = (req, res) => {
 const search = (req, res) => {
     let { search, from, to } = req.query;
     
-    const cubes = searchService.search(search,from,to)
+    const cubes = searchService.search(search,from,to);
+
+ 
     res.render('index', {
-        cubes
+        title: 'SEARCH',
+        search,
+        from,
+        to,
+        cubes,
     })
     console.log(req.query)
     
