@@ -5,6 +5,6 @@ const home = (req, res) => {
     res.render('index')
 };
 
-router.get('/index', home);
+router.get('/', home);
 
 module.exports = router
