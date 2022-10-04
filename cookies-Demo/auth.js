@@ -17,9 +17,9 @@ app.use(
 );
 
 const homeTemplate = (user,users) => `<h1>Welcome, ${user || 'guest'}</h1>
-${user == undefined ? '<p>Please login: <a href="/login">login here</a>. If you dont have an account, <a href="/register"please register<a/>.' : ''}
+${user == undefined ? '<p>Please login: <a href="/login">login here</a>. If you dont have an account, <a href="/register">please register<a/>.' : ''}
 <ul>
-${users.map(u => `<li>${u.username}</li>`).join('\n')}
+${users && users.map(u => `<li>${u.username}</li>`).join('\n')}
 </ul>`;
 
 app.get("/", (req, res) => {
@@ -46,10 +46,12 @@ ${error ? `<p>${error}</p>` : ""}
 </form>`;
 
 app.get("/register", (req, res) => {
+    console.log(users)
   res.send(registerTemplate());
 });
 
 app.post("/register",  async (req, res) => {
+
     try {
         if (req.body.username == "" || req.body.password == "") {
           throw new Error("All fields are required");
@@ -61,7 +63,7 @@ app.post("/register",  async (req, res) => {
     }
    
     await register(req.body.username,req.body.password);
-    res.redirect('/')
+    res.redirect('/login')
   
 });
 
