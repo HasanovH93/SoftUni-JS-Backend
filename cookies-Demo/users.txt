@@ -20,7 +20,8 @@
     "hashedPassword": "$2b$10$KvyDIDJdnqcIZjdGJIseweVRWqm172lhLIs9yW8PtWvaz6t5AYTES",
     "failedAttempts": 0,
     "role": [
-      "user"
+      "user",
+      "admin"
     ]
   }
 ]
