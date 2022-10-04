@@ -27,14 +27,6 @@ app.get("/", (req, res) => {
   res.send(homeTemplate(req.session.user, users))
 });
 
-app.get("/login", (req, res) => {
-  res.send(`<h1>Login</h1>
-  <form action="/login" method="post">
-       <label>Username: <input type="text" name="username"></label>
-      <label>Password: <input type="password" name="password"></label>
-      <input type="submit" value="Log in">
-       </form>`);
-});
 
 const registerTemplate = (error) => `<h1>Register</h1>
 ${error ? `<p>${error}</p>` : ""}
@@ -67,14 +59,27 @@ app.post("/register",  async (req, res) => {
   
 });
 
+const loginTemplate = (error) => `<h1>Login</h1>
+${error ? `<p>${error}</p>` : ""}
+<form action="/login" method="post">
+<label>Username: <input type="text" name="username"></label>
+<label>Password: <input type="password" name="password"></label>
+<input type="submit" value="Sign In">
+</form>`;
+
+
+app.get("/login", (req, res) => {
+    res.send(loginTemplate())
+  });
+
 app.post("/login", async  (req, res) => {
   console.log("Login attempt");
-
-  if (await login(req.body.username, req.body.password)) {
-    req.session.user = req.body.username;
-    res.redirect("/");
-  } else {
-    res.status(401).send("Incorrect username or password");
+  try{
+   const result = await login(req.body.username,req.body.password)
+   req.session.user = result.username;
+   res.redirect("/");
+  }catch(err){
+    res.status(401).res.render(loginTemplate(err.message))
   }
 });
 

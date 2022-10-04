@@ -21,15 +21,18 @@ async function login(username, password) {
   );
 
   if (!user) {
-    return false;
+    throw new Error("Incorrect username or password");
   } else {
+    if (user.failedAttempts >= 3) {
+      throw new Error("User profile is blocked.Please contact us!");
+    }
     const success = await bcrypt.compare(password, user.hashedPassword);
     if (success) {
-        user.failedAttempts = 0;
-      return true;
+      user.failedAttempts = 0;
+      return user;
     } else {
       user.failedAttempts++;
-      return false;
+      throw new Error("Incorrect username or password");
     }
   }
 }
