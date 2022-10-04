@@ -19,7 +19,7 @@ app.use(
 const homeTemplate = (user,users) => `<h1>Welcome, ${user || 'guest'}</h1>
 ${user == undefined ? '<p>Please login: <a href="/login">login here</a>. If you dont have an account, <a href="/register">please register<a/>.' : ''}
 <ul>
-${users && users.map(u => `<li>${u.username}</li>`).join('\n')}
+${users.map(u => `<li>${u.username} - ${u.failedAttempts}</li>`).join('\n')}
 </ul>`;
 
 app.get("/", (req, res) => {
