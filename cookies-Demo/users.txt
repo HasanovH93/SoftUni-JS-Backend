@@ -1,0 +1,26 @@
+[
+  {
+    "username": "peter",
+    "hashedPassword": "$2b$10$oayFiSnr.xX3JAC7skCZF.1xsPnBxL.ol0V/tsdSe0rf7N2gg7bHC",
+    "failedAttempts": 0,
+    "role": [
+      "user"
+    ]
+  },
+  {
+    "username": "john",
+    "hashedPassword": "$2b$10$HyJE4J5FTJZN19e9JK0o2eiEAJDdJiDfLOo3ZAuzNTdWiK5kGFcDW",
+    "failedAttempts": 0,
+    "role": [
+      "user"
+    ]
+  },
+  {
+    "username": "hasan",
+    "hashedPassword": "$2b$10$KvyDIDJdnqcIZjdGJIseweVRWqm172lhLIs9yW8PtWvaz6t5AYTES",
+    "failedAttempts": 0,
+    "role": [
+      "user"
+    ]
+  }
+]

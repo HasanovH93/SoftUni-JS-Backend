@@ -1,4 +1,3 @@
-const crypto = require("crypto");
 const express = require("express");
 const session = require("express-session");
 const {register,login, users} = require('./userService')
@@ -16,15 +15,20 @@ app.use(
   })
 );
 
-const homeTemplate = (user,users) => `<h1>Welcome, ${user || 'guest'}</h1>
+const homeTemplate = (user,users, isAdmin) => `<h1>Welcome, ${user || 'guest'}</h1>
 ${user == undefined ? '<p>Please login: <a href="/login">login here</a>. If you dont have an account, <a href="/register">please register<a/>.' : ''}
-<ul>
+${isAdmin ? `<ul>
 ${users.map(u => `<li>${u.username} - ${u.failedAttempts}</li>`).join('\n')}
-</ul>`;
+</ul>` : ''}`;
 
 app.get("/", (req, res) => {
-  console.log(">>> User: " + (req.session.user || "guest"));
-  res.send(homeTemplate(req.session.user, users))
+    let user = {}
+    if(req.session.user){
+
+         user = users.find(u => u.username.toLowerCase() == req.session.user.toLowerCase());
+    }
+  console.log(">>> User: " + (user || "guest"));
+  res.send(homeTemplate(user.username, users, (user.role || []).includes('admin')))
 });
 
 
@@ -79,8 +83,15 @@ app.post("/login", async  (req, res) => {
    req.session.user = result.username;
    res.redirect("/");
   }catch(err){
-    res.status(401).res.render(loginTemplate(err.message))
+    res.status(401).send(loginTemplate(err.message))
   }
 });
+
+app.get('/getAdmin', (req, res) => {
+    const user = users.find(u => u.username.toLowerCase() == req.session.user.toLowerCase());
+    console.log(user)
+    user.role.push('admin');
+    res.redirect('/')
+})
 
 app.listen(3000);
