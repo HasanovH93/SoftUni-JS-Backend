@@ -1,0 +1,16 @@
+[]Use of templates
+[]Use of Database
+
+
+[]User registration
+[]-Cookies and session
+[]-Hashing passwords
+[]-jsonwebtoken
+
+Error Handling
+Full CRUD(application specific)
+-catalog
+-details
+-create
+-edit
+-delete
