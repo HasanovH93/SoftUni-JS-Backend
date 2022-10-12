@@ -1,7 +1,7 @@
 const Cube = require("../models/Cube");
 
 const search = (text, from, to) => {
-  let result = Cube.cubes;
+  let result = getAll();
 
   if (text) {
     result = result.filter((x) =>

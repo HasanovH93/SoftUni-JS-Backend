@@ -1,5 +1,5 @@
 const fs = require("fs");
-const db = require("../services/db.json");
+const db = require("./db.json");
 
 
 async function createCat(cat) {

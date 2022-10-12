@@ -1,15 +1,21 @@
 const Cube = require("../models/Cube");
 
 
-const getall = () => Cube.cubes;
+const getall = () => Cube.find({}).lean();
 
-const getOne = (id) => Cube.cubes.find(x => x.id == id)
+const getOne = (id) => Cube.findById({id}).lean()
 
 
 const create = (name,description,imgUrl,difficulty) => {
       
-    let cube = new Cube(name,description,imgUrl,difficulty);
-    Cube.add(cube)
+    let cube = new Cube({
+        name,
+        description,
+        imgUrl,
+        difficulty
+
+    });
+   return cube.save()
 };
 
 const cubeService = {

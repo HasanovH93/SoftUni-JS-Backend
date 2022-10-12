@@ -3,8 +3,8 @@ const cubeService = require('../services/createServices');
 const searchService = require('../services/searchService')
 
 
-const home = (req, res) => {
-   let cubes =  cubeService.getall()
+const home = async (req, res) => {
+   let cubes = await cubeService.getall()
     res.render('index', {
         cubes
     })
@@ -33,6 +33,7 @@ const search = (req, res) => {
 
 router.get('/', home);
 router.get('/about',about);
-router.get('/search',search)
+router.get('/search',search);
+router.get('/details')
 
 module.exports = router

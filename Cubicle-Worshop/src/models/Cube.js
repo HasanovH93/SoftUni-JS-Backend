@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const cubeSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  desciption: { type: String, required: true, maxlength: 100 },
+  description: { type: String, required: true },
   imgUrl: { type: String, required: true, validate: /^https?:\/\//i },
-  difficultyLevel: {
+  difficulty: {
     type: Number,
     require: true,
     min: 1,
