@@ -1,5 +1,6 @@
-[]Use of templates
-[]Use of Database
+[x]Use of templates
+[x]Use of Database
+[]Use of express plugin libraries
 
 
 []User registration
@@ -7,10 +8,13 @@
 []-Hashing passwords
 []-jsonwebtoken
 
-Error Handling
+[]Error Handling
+
 Full CRUD(application specific)
 -catalog
 -details
 -create
 -edit
 -delete
+
+Demo global error handling
