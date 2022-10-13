@@ -43,11 +43,11 @@ authController.get("/login", (req, res) => {
 });
 
 authController.post("/login", async (req, res) => {
-
   try {
    const token =  await login(req.body.username, req.body.password);
    //TODO replace with redirect by assignment
-   res.cookie('token',token)
+   res.cookie('token',token);
+   res.redirect('/')
   } catch (error) {
     const errors = parseError(error);
     res.render("login", {

@@ -1,15 +1,15 @@
 [x]Use of templates
 [x]Use of Database
-[]Use of express plugin libraries
+[x]Use of express plugin libraries
 
 
 []User registration
-[]-Cookies and session
-[]-Hashing passwords
-[]-jsonwebtoken
+[x]-Cookies and session
+[x]-Hashing passwords
+[x]-jsonwebtoken
 
-[]Error Handling
-
+[x]Error Handling
+[] Use role guards
 Full CRUD(application specific)
 -catalog
 -details
