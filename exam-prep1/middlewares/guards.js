@@ -1,11 +1,9 @@
-const { response } = require("express");
-
 function hasUser() {
   return (req, res, next) => {
     if (req.user) {
       next();
     } else {
-      response.redirect("/auth/login");
+      res.redirect("/auth/login");
     }
   };
 }
