@@ -3,7 +3,12 @@ const mongoose = require("mongoose");
 const cubeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  imgUrl: { type: String, required: true, validate: /^https?:\/\//i },
+  imgUrl: { type: String, required: true, validate: {
+    validator: function(value) {
+      return /^https?:\/\//i.test(value)
+    },
+    message: "Image Url is Invalid"
+  } },
   difficulty: {
     type: Number,
     require: true,
