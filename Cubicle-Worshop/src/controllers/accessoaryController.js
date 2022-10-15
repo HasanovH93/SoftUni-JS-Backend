@@ -1,15 +1,16 @@
-const express = require('express')
+const router = require('express').Router();
 
-const router = express.Router();
+const { create } = require('../services/accessoryService')
 
 router.get('/create', (req,res) => {
     console.log("GET")
     res.render('accessory/create');
 });
 
-router.post('/create', (req, res) => {
-    const accessory = req.body;
-    console.log(accessory);
+router.post('/create', async (req, res) => {
+    const { name, description, imageUrl } = req.body;
+
+    await create(name,description,imageUrl)
 
     res.redirect('/')
 })
