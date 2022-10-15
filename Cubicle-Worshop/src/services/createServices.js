@@ -3,7 +3,7 @@ const Cube = require("../models/Cube");
 
 const getall = () => Cube.find({}).lean();
 
-const getOne = (id) => Cube.findById({id}).lean()
+const getOne = (id) => Cube.findById(id).lean()
 
 
 const create = (name,description,imgUrl,difficulty) => {

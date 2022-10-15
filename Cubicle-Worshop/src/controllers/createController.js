@@ -20,13 +20,13 @@ const createCube = async (req, res) => {
 
 const getCubeDetails = async (req, res) => {
   let cube = await cubeService.getOne(req.params.cubeId);
-  res.render("details", {
+  res.render("cube/details", {
     ...cube,
   });
 };
 
 router.get("/create", renderCreateCubePage);
 router.post("/create", createCube);
-router.get("/cube/:cubeId", getCubeDetails);
+router.get("/:cubeId", getCubeDetails);
 
 module.exports = router;
