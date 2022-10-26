@@ -1,4 +1,5 @@
-const { body, validationResult } = require('express-validator')
+const cookieParser = require('cookie-parser');
+const { body, validationResult, cookie } = require('express-validator')
 const { register, login } = require("../services/userService");
 const { parseError } = require("../util/parser");
 
@@ -68,5 +69,10 @@ authController.post("/login", async (req, res) => {
     });
   }
 });
+
+authController.get('/logout', (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/')
+})
 
 module.exports = authController;
