@@ -1,3 +1,7 @@
+const courseController = require("express").Router();
+
+const { isOwner } = require("../middlewares/guards");
+const preload = require("../middlewares/preload");
 const {
   createCourse,
   getById,
@@ -7,7 +11,6 @@ const {
 } = require("../services/courseService");
 const { parseError } = require("../util/parser");
 
-const courseController = require("express").Router();
 
 courseController.get("/create", (req, res) => {
   res.render("create", {
@@ -15,18 +18,20 @@ courseController.get("/create", (req, res) => {
   });
 });
 
-courseController.get("/:id", async (req, res) => {
-  const course = await getById(req.params.id);
+courseController.get("/:id", preload(true), async (req, res) => {
+  const course = res.locals.course
   course.isOwner = course.owner.toString() == req.user._id.toString();
-  course.enrolled = course.users.map(x => x.toString().includes(req.user._id.toString()))
+  course.enrolled = course.users.map((x) =>
+    x.toString().includes(req.user._id.toString())
+  );
   res.render("details", {
     title: course.title,
     course,
   });
 });
 
-courseController.get("/:id/delete", async (req, res) => {
-  const course = await getById(req.params.id);
+courseController.get("/:id/delete", preload(),isOwner(), async (req, res) => {
+  const course = res.locals.course;
 
   if (course.owner.toString() != req.user._id.toString()) {
     return res.redirect("/auth/login");
@@ -56,8 +61,8 @@ courseController.post("/create", async (req, res) => {
   }
 });
 
-courseController.get("/:id/edit", async (req, res) => {
-  const course = await getById(req.params.id);
+courseController.get("/:id/edit", preload(), isOwner(), async (req, res) => {
+  const course = res.locals.course;
 
   if (course.owner.toString() != req.user._id.toString()) {
     return res.redirect("/auth/login");
@@ -69,39 +74,36 @@ courseController.get("/:id/edit", async (req, res) => {
   });
 });
 
-courseController.post("/:id/edit", async (req, res) => {
-  const course = await getById(req.params.id);
+courseController.post("/:id/edit", preload(), isOwner(), async (req, res) => {
+  const course = res.locals.course;
 
   if (course.owner.toString() != req.user._id.toString()) {
     return res.redirect("/auth/login");
   }
 
-
-
   try {
     await updateById(req.params.id, req.body);
     res.redirect(`/course/${req.params.id}`);
   } catch (error) {
-    res.render('edit', {
-        title: 'Edit Course',
-        errors: parseError(error),
-        course: req.body
-    })
+    res.render("edit", {
+      title: "Edit Course",
+      errors: parseError(error),
+      course: req.body,
+    });
   }
 });
 
-courseController.get('/:id/enroll', async(req , res) => {
-    const course = await getById(req.params.id);
+courseController.get("/:id/enroll", preload(), async (req, res) => {
+  const course = res.locals.course;
 
-    if (course.owner.toString() != req.user._id.toString() 
-    && course.users.map(x => x.toString()).includes(req.user._id.toString()) == false) {
-        await enrollUser(req.params.id,req.user._id);
-      }
+  if (
+    course.owner.toString() != req.user._id.toString() &&
+    course.users.map((x) => x.toString()).includes(req.user._id.toString()) ==
+      false
+  ) {
+    await enrollUser(req.params.id, req.user._id);
+  }
 
-    
-      res.redirect(`/course/${req.params.id}`);
-
-    
-
-})
+  res.redirect(`/course/${req.params.id}`);
+});
 module.exports = courseController;
