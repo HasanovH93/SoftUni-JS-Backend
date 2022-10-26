@@ -1,3 +1,4 @@
+const { body, validationResult } = require('express-validator')
 const { register, login } = require("../services/userService");
 const { parseError } = require("../util/parser");
 
@@ -10,10 +11,18 @@ authController.get("/register", (req, res) => {
   });
 });
 
-authController.post("/register", async (req, res) => {
+authController.post("/register",
+body('username')
+.isLength({min: 5}).withMessage('Username must be at least 5 characters long')
+.isAlphanumeric().withMessage('Username may contain only letters and numbers'),
+body('password')
+.isLength({min: 5}).withMessage('Password must be at least 5 characters long')
+.isAlphanumeric().withMessage('Password may contain olny letters and numbers'),
+async (req, res) => {
   try {
-    if (req.body.username == "" || req.body.password == "") {
-      console.log("All fields are required!");
+    const { errors } = validationResult(req);
+    if(errors.length > 0 ){
+      throw errors;
     }
     if (req.body.password != req.body.repass) {
       throw new Error("passwords dont match");
