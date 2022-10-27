@@ -1,6 +1,10 @@
 const express = require('express');
-const { default: mongoose } = require('mongoose');
+const mongoose  = require('mongoose');
+const authController = require('./controllers/auth');
+const dataController = require('./controllers/data');
 const cors = require('./middlewares/cors');
+const session = require('./middlewares/session');
+const trimBody = require('./middlewares/trimBody');
 
 const CONNECTION_STRING = 'mongodb://localhost:27017/furniture';
 
@@ -13,10 +17,14 @@ async function start(){
 
     app.use(express.json());
     app.use(cors());
+    app.use(trimBody());
+    app.use(session());
     
     app.get('/', (req, res) => {
         res.json({ message: 'REST Service opereational'});
     })
     
+    app.use('/users', authController);
+    app.use('/data/catalog', dataController);
     app.listen(3030, () => console.log('REST Service started!'))
 }
