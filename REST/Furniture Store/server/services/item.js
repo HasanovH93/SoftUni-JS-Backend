@@ -6,6 +6,10 @@ async function getAll(){
 
 }
 
+async function getByUserId(userId){
+    return Item.find({_ownerId: userId})
+}
+
 
 async function getById(id){
   return Item.findById(id);
@@ -16,12 +20,22 @@ async function create(item){
 
 }
 async function edit(id,item){
+   const existing = await Item.findById(id)
 
+   existing.make = item.make;
+   existing.model = item.model;
+   existing.year = item.year;
+   existing.description = item.description;
+   existing.price = item.price;
+   existing.img = item.img;
+   existing.material = item.material;
+   
+   return existing.save();
 }
 
 
-async function deleteByID(id){
-   return Item.deleteByID(id);
+async function deleteItem(id){
+   return Item.findByIdAndDelete(id)
 }
 
 module.exports = {
@@ -29,5 +43,6 @@ module.exports = {
     getById,
     create,
     edit,
-    deleteByID
+    deleteItem,
+    getByUserId
 }
