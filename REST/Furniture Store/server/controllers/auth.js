@@ -26,14 +26,13 @@ authController.post('/login', async (req, res) => {
         const token =  await login(req.body.email, req.body.password);
         res.json(token)
        } catch (error) {
-         res.status(401).json({
-             message: error.message
-         })
+        const message = parseError(error)
+        res.status(401).json({ message })
        }
 });
 
 authController.get('/logout', async (req, res) => {
-  const token = req.headers[x-authorization];
+  const token = req.token
   await logout(token);
   res.status(204).end();
 
