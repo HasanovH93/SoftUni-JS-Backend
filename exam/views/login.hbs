@@ -1,0 +1,19 @@
+{{!-- <h1>Login</h1>
+
+<form method="post" action="/auth/login">
+<label>Username:  <input type="text" name="username" value="{{body.username}}"></label>
+<label>Username:  <input type="password" name="password"></label>
+<button>Login</button>
+</form> --}}
+
+<div class="login-box">
+            <h1>Login</h1>
+            <form action="/auth/login" method="POST">
+                <label>Email</label>
+                <input type="text" placeholder="Email.." name="email">
+                <label>Password</label>
+                <input type="password" placeholder="Password.." name="password">
+                <input type="submit" value="Submit">
+            </form>
+            <p>Not have an account? <a href="#">Register here</a></p>
+        </div>
