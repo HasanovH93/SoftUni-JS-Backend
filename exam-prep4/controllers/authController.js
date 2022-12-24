@@ -30,6 +30,7 @@ authController.post("/register", async (req, res) => {
       errors,
       body: {
         email: req.body.email,
+        username: req.body.username,
       },
     });
   }

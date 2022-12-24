@@ -1,26 +1,13 @@
 {{!-- <h1>Home Page</h1>
+
 {{#if user}}
-<p>Logged in as {{user.username}} </p>
+<p>Logged In  as {{user.username}}</p>
 {{/if}} --}}
 
 
-<div class="container">
-    <div class="blog-message">
-        <h1 id="site-title">Blog</h1>
-        <h2 id="site-mid-title">Create your own world!</h2>
-    </div>
-
-    <div class="last-blogs">
-        {{#if data}}
-        {{#each data}} {{> blogs}} {{/each}}
-    </div>
-
-
-
-
-{{else}}
-<article class="not-available-blogs">
-    <h1>No blogs created yet.</h1>
-</article>
-</div>
-{{/if}}
+        <section id="homePage" class="background-img">
+            <div class="introduction">
+                <h1>Welcome to our Charity Shops</h1>
+                <p>Our online charity shops sell christmas toys for future Christmas. All money raised helps people in crisis in comunity and around the world.</p>
+            </div>
+        </section>

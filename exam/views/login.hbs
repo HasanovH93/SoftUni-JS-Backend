@@ -1,19 +1,19 @@
-{{!-- <h1>Login</h1>
+{{!-- <h1>Login Page</h1>
 
-<form method="post" action="/auth/login">
-<label>Username:  <input type="text" name="username" value="{{body.username}}"></label>
-<label>Username:  <input type="password" name="password"></label>
-<button>Login</button>
+<form action="/auth/login" method="POST">
+<label for="">Username</label>
+<input type="text" name="username" value="{{body.username}}">
+<label for="">Password</label>
+<input type="password" name="password">
+<button>Register</button>
 </form> --}}
 
-<div class="login-box">
-            <h1>Login</h1>
-            <form action="/auth/login" method="POST">
-                <label>Email</label>
-                <input type="text" placeholder="Email.." name="email">
-                <label>Password</label>
-                <input type="password" placeholder="Password.." name="password">
-                <input type="submit" value="Submit">
+  <section id="loginPage">
+            <form id='loginForm' action="/auth/login" method="POST">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="submit" class="register" value="Login">
             </form>
-            <p>Not have an account? <a href="#">Register here</a></p>
-        </div>
+        </section>

@@ -41,8 +41,8 @@ adController.get("/ads", async (req, res) => {
 adController.get("/details/:id/", async (req, res) => {
   const id = req.params.id;
   const data = await getById(id);
+  console.log(data)
   data.candidates = data.applied.length;
-  console.log(data.applied.length)
   if (req.user) {
     data.isUser = true;
     data.isApply =

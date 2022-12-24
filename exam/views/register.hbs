@@ -1,24 +1,25 @@
-{{!-- <h1>Register</h1>
+{{!-- <h1>Register Page</h1>
 
-<form method="post" action="/auth/register">
-<label>Username:  <input type="text" name="username" value="{{body.username}}"></label>
-<label>Username:  <input type="password" name="password"></label>
-<label>Repeat:    <input type="password" name="repass"></label>
+<form action="/auth/register" method="POST">
+<label for="">Username</label>
+<input type="text" name="username" value="{{body.username}}">
+<label for="">Password</label>
+<input type="password" name="password">
+<label for="">Repeat Password:</label>
+<input type="password" name="repass">
 <button>Register</button>
 </form> --}}
 
-<div class="register-box">
-            <h1>Register</h1>
-            <form action="/auth/register" method="POST">
-                <label>Username</label>
-                <input type="text" placeholder="Username.." name="username">
-                <label>Email</label>
-                <input type="text" placeholder="Email.." name="email">
-                <label>Password</label>
-                <input type="password" placeholder="Password.." name="password">
-                <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm Password.." name="repass">
-                <input type="submit" value="Submit">
+ <section id="registerPage">
+            <form id='registerForm' action="/auth/register" method="POST">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your Username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+                <label for="rePassword">Repeat Password:</label>
+                <input type="password" id="rePassword" name="repass" placeholder="Repeat Password">
+                <input type="submit" class="register" value="Register">
             </form>
-            <p>Already have an account? <a href="#">Login here</a></p>
-        </div>
+        </section>

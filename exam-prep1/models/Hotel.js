@@ -5,12 +5,7 @@ const URL_PATTERN = /^https?:\/\/.+$/i;
 const hotelSchema = new Schema({
   name: { type: String, required: true, unique: true, minlength : [4, 'Hotel name must be at least 4 characters long'] },
   city: { type: String, required: true ,minlength : [3, 'City name must be at least 4 characters long'] },
-  imageUrl: { type: String, required: true, validate: {
-    validator: (value) => {
-        URL_PATTERN.test(value)
-    },
-    message: 'Image Url ist not valid'
-  } },
+  imageUrl: { type: String, required: true,  },
   rooms: {
     type: Number,
     required: true,

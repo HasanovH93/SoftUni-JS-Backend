@@ -1,55 +1,75 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/Register">Register</a>
+    <a href="/auth/logout">logout</a>
+     {{#if errors}}
+ <div>
+    {{#each errors}}
+    <p>{{this}}</p>
+    {{/each}}
+ </div>
+ {{/if}}
+    {{{body}}}
+</body>
+</html> --}}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Blog</title>
+    <title>Charity Christmas</title>
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
 <body>
-<!-- In case of error, you should display div with class "errorContainer" -->
+    <!-- In case of error, you should display div with class "errorContainer" -->
     <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-
-     <div> 
-        {{#if errors}}
-       <div class="errorContainer">
-                {{#each errors}}
-                <p>{{this}}</p>
-                {{/each}}
-            </div>
+     <div>
+    {{#if errors}}
+        <div class="errorContainer">
+        {{#each errors}}
+            <p>{{this}}</p>
+             {{/each}}
         </div>
         {{/if}}
-    <div class="navigation">
+    </div> 
+
+    <div id="container">
+
         <nav>
-            <img src="/static/images/logo.jpg">
             <ul>
-                <!-- Guest users and Logged users -->
+                <!--For all users-->
                 <li><a href="/">Home</a></li>
-                <li><a href="/blogs">Blogs</a></li>
-                    <!--For loggin users-->
+                <li><a href="/catalog/charities">Catalog</a></li>
+                <!--For loggin users-->
                 {{#if username}}
-                <li><a href="#">Profile</a></li>
-                <li><a href="/create">Create Blog</a></li>
+                <li><a href="/catalog/create">Create Toy</a></li>
+                <li><a href="/catalog/search">Search</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
                 {{else}}
-                <!--For guest users-->
+                <!--For guest user-->
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
                 {{/if}}
-            
 
             </ul>
+
         </nav>
+
+        {{{body}}}
+
+        <footer>@SoftUni - JS Back-end - Charity Christmas 2022</footer>
     </div>
 
-    <main>
-  {{{body}}}
-            </main>
-
-    <footer>Back-End 2022</footer>
 </body>
 
 </html>

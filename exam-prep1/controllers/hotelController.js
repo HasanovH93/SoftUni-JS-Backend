@@ -11,7 +11,7 @@ const hotelController = require("express").Router();
 
 hotelController.get("/:id/details", async (req, res) => {
   const hotel = await getById(req.params.id);
-
+ console.log(hotel)
   if (hotel.owner == req.user._id) {
     hotel.isOwner = true;
   }else if(hotel.bookings.map(b => b.toString()).includes(req.user._id.toString())) {

@@ -1,16 +1,18 @@
 const express = require('express');
 const expressConfig = require('./config/express');
-const databaseConfig = require('./config/database');
+const dbConfig = require('./config/database')
 const routesConfig = require('./config/routes')
+
+
 
 start()
 async function start(){
- //... execute config
-    const app = express();
-    expressConfig(app);
-    await databaseConfig(app);
-    routesConfig(app)
+  
+    const app = express()
+    expressConfig(app)
+    await dbConfig(app)
+    routesConfig(app);
 
-app.listen(3000, () => console.log('App is running...'))
 
+    app.listen(3000, () => console.log('Server is running on port 3000'))
 }
