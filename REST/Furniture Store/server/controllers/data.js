@@ -1,4 +1,5 @@
 const { hasUser } = require("../middlewares/guards");
+const CoinGecko = require('coingecko-api');
 const {
   getAll,
   create,
@@ -12,6 +13,25 @@ const { parseError } = require("../util/parser");
 const dataController = require("express").Router();
 
 dataController.get("/", async (req, res) => {
+
+  const CoinGeckoClient = new CoinGecko();
+
+  // let data = await CoinGeckoClient.coins.list()
+  let data = await CoinGeckoClient.coins.fetch('aave-amm-unilinkweth', {});
+  console.log(data.data)
+  // let coinsArray = data.data;
+  // for(let item of data.data){
+  //   console.log(item.id)
+  // }
+  // console.log(coinsArray)
+  // coinsArray.filter((coin) => {
+  //   Object.values(coin).some((word) => word.includes('btc'))
+  // })
+  // console.log(coinsArray)
+
+
+
+
   let items = [];
   if (req.query.where) {
     const userId = JSON.parse(req.query.where.split("=")[1]);
@@ -24,9 +44,18 @@ dataController.get("/", async (req, res) => {
 
 dataController.post("/", hasUser(), async (req, res) => {
   try {
-    const data = Object.assign({ _ownerId: req.user._id }, req.body);
-    const item = await create(data);
-    res.json(item);
+      //2. Initiate the CoinGecko API Client
+  const CoinGeckoClient = new CoinGecko();
+  console.log('')
+  //3. Make calls
+  var func = async() => {
+    let data = await CoinGeckoClient.ping();
+ 
+  };
+  console.log(func)
+  //   const data = Object.assign({ _ownerId: req.user._id }, req.body);
+  //   const item = await create(data);
+  //   res.json(item);
   } catch (error) {
     const message = parseError(error);
     res.status(400).json({ message });
@@ -67,4 +96,20 @@ dataController.delete("/:id", hasUser(), async (req, res) => {
   }
 });
 
+
+dataController.get('/dadada/ne', (req, res) => {
+
+ 
+
+
+  //2. Initiate the CoinGecko API Client
+  const CoinGeckoClient = new CoinGecko();
+  
+  //3. Make calls
+  var func = async() => {
+    let data = await CoinGeckoClient.ping();
+    console.log(data)
+  };
+
+})
 module.exports = dataController;
